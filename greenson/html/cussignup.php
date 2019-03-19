@@ -1,20 +1,10 @@
 <?php
+include "config.php";
 session_start();
 
 // initializing variables
 $errors = array(); 
 
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "salmgmtv1";
-
-// Create connection
-$conn = mysqli_connect($servername, $username, $password, $dbname);
-// Check connection
-if ($conn) {
-    echo "connected ";
-}
 
 $cname="";
 $cgst="";
@@ -59,6 +49,7 @@ echo "entered isset";
   $user_check_query = "SELECT * FROM customer WHERE username='$uname' OR email='$email' LIMIT 1";
   $result = mysqli_query($conn, $user_check_query);
   $user = mysqli_fetch_assoc($result);
+  
   if ($user) { // if user exists
     if ($user['username'] === $uname) {
       array_push($errors, "Username already exists");
@@ -86,8 +77,12 @@ echo "entered isset";
       $query = "INSERT INTO customer (address, email, gst,mob1,mob2,name,password,username) 
                 VALUES('$address', '$email', '$cgst','$mob1','$mob2','$cname','$psw','$uname')";
       mysqli_query($conn, $query);
-      header("Location: cuswelcome.html");
-      
+     $_SESSION['uname'] = $uname;
+  	$_SESSION['success'] = "You are now logged in";
+  	
+      header("Location: cuswelcome.php");
+
+   
    }
 } ?>
  
@@ -139,7 +134,7 @@ echo "entered isset";
  
 <h2 style ="text-align:  center">Customer Signup </h2> 
  
-<form action="" method="post"> 
+<form action="cussignup.php" method="post"> 
    
   <div class="container"> 
     <label for="cname"><b>Company name</b></label> 
@@ -163,10 +158,9 @@ echo "entered isset";
     <input type="password" placeholder="Confirm password" name="confirmpsw"  required> 
     <span class="error">* <?php echo $pswerror;?><br></span>
       
-    <label for="email"><b>E-mail</b></label> <br>
-    <span class="error">* <?php echo $emailerror;?><br></span>
+    <label for="email"><b>E-mail</b></label> 
     <input type="text" placeholder="Enter email" name="email" value="<?php echo $email; ?>" required> 
-    
+     <span class="error">* <?php echo $emailerror;?><br></span>
       
     <label for="mob1"><b>mobile number</b></label> 
     <input type="text" placeholder="Enter mobile number" name="mob1" value="<?php echo $mob1; ?>" required> 
@@ -175,7 +169,7 @@ echo "entered isset";
       <label for="mob2"><b>alternative mobile number </b></label> 
     <input type="text" placeholder="Enter Username" name="mob2" value ="<?php echo $mob2; ?>" > 
          
-     <button type="submit" class="btn" name="reg_user">Register</button> 
+     <a href="cuslogin.php"><button type="submit" class="btn" name="reg_user" >Register</button></a> 
     <label> 
       <input type="checkbox" checked="checked" name="remember"> Remember me 
     </label> 
