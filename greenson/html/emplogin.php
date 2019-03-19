@@ -16,7 +16,7 @@ if(isset($_POST["reg_emp"])){
     $uname = mysqli_real_escape_string($conn, $_POST['uname']);
     //echo "usernam eis ".$uname;
     $psw = mysqli_real_escape_string($conn, $_POST['psw']);
-    $emp_chk_query = "SELECT * FROM employee WHERE username='$uname'";
+    $emp_chk_query = "SELECT * FROM employees WHERE username='$uname'";
     $result = mysqli_query($conn,$emp_chk_query);
     $emp = mysqli_fetch_assoc($result);
     //echo "DISP NOW"." ".count($result);

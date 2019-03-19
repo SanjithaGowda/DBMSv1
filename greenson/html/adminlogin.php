@@ -12,14 +12,14 @@ $psw = "";
 if(isset($_POST["reg_adm"])){
     $uname = mysqli_real_escape_string($conn, $_POST['uname']);;
     $psw = mysqli_real_escape_string($conn, $_POST['psw']);
-    $emp_chk_query = "SELECT * FROM admin WHERE username='$uname'";
+    $emp_chk_query = "SELECT * FROM owner WHERE username='$uname'";
     $result = mysqli_query($conn,$emp_chk_query);
     $emp = mysqli_fetch_assoc($result);
 
     if($emp['username']){
         $pwd_orig = $emp['password'];
         if(md5($psw) == $pwd_orig){
-            $_SESSION['reg_emp']=$uname;
+            //$_SESSION['reg_emp']=$uname;
             echo "header to be filled";
             // header("Location: cuswelcome.html");
         }
