@@ -2,28 +2,23 @@
 session_start();
 include("config.php");
 $error="";
-if ($conn) {
-    echo "Connected ";
-}
-else{
-    echo "Connection failure!";
-}
 $uname="";
 $psw = "";
 if(isset($_POST["reg_emp"])){
     $uname = mysqli_real_escape_string($conn, $_POST['uname']);
     //echo "usernam eis ".$uname;
     $psw = mysqli_real_escape_string($conn, $_POST['psw']);
-    $emp_chk_query = "SELECT * FROM employee WHERE username='$uname'";
+    $emp_chk_query = "SELECT * FROM employees WHERE uname='$uname'";
     $result = mysqli_query($conn,$emp_chk_query);
     $emp = mysqli_fetch_assoc($result);
     //echo "DISP NOW"." ".count($result);
     //echo $emp['username']." ".$emp['password'];
-    if($emp['username']){
-        $pwd_orig = $emp['password'];
+    if($emp['uname']){
+        $pwd_orig = $emp['pwd'];
         if(md5($psw) == $pwd_orig){
-            $_SESSION['reg_emp']=$uname;
-           header("Location: cuswelcome.php");
+            $_SESSION['emp']=$uname;
+            echo "header not set";
+           //header("Location: cuswelcome.php");
         }
         else{
             $error = "Password entered is invalid.";
@@ -101,7 +96,7 @@ if(isset($_POST["reg_emp"])){
 
  </form>
   
-<footer style="background-color: black;"> <center><a href="home.html" style="color: white">Home | </a><a href="gallery.html" style="color: white">Gallery | </a><a href="products.html" style="color: white">Products | </a><a href="home.html" style="color: white">About us |</a><a href="home.html" style="color: white">Contact us  </a><br>Developed by <br><a href="https://www.linkedin.com/in/sanjitha-gowda-94113b142/" style="color: white">Sanjitha Gowda</a><br></center></footer>
-  
+<footer style="background-color: black;"> <center><a href="home.html" style="color: white">Home | </a><a href="gallery.html" style="color: white">Gallery | </a><a href="products.html" style="color: white">Products | </a><a href="home.html" style="color: white">About us |</a><a href="home.html" style="color: white">Contact us  </a><br>Developed by <br><a href="https://www.linkedin.com/in/sanjitha-gowda-94113b142/" style="color: white">Sanjitha Gowda</a>, <a href = "https://www.linkedin.com/in/tppreetham7/" style = "color:white"> Preetham T P</a><br></center></footer>
+
 </body>
 </html>
