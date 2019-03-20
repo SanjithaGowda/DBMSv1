@@ -6,13 +6,10 @@ $uname="";
 $psw = "";
 if(isset($_POST["reg_emp"])){
     $uname = mysqli_real_escape_string($conn, $_POST['uname']);
-    //echo "usernam eis ".$uname;
     $psw = mysqli_real_escape_string($conn, $_POST['psw']);
     $emp_chk_query = "SELECT * FROM employees WHERE uname='$uname'";
     $result = mysqli_query($conn,$emp_chk_query);
     $emp = mysqli_fetch_assoc($result);
-    //echo "DISP NOW"." ".count($result);
-    //echo $emp['username']." ".$emp['password'];
     if($emp['uname']){
         $pwd_orig = $emp['pwd'];
         if(md5($psw) == $pwd_orig){
