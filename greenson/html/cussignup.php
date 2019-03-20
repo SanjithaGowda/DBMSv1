@@ -46,12 +46,12 @@ echo "entered isset";
 
   // first check the database to make sure 
   // a user does not already exist with the same username and/or email
-  $user_check_query = "SELECT * FROM customer WHERE username='$uname' OR email='$email' LIMIT 1";
+  $user_check_query = "SELECT * FROM customer WHERE uname='$uname' OR email='$email' LIMIT 1";
   $result = mysqli_query($conn, $user_check_query);
   $user = mysqli_fetch_assoc($result);
   
   if ($user) { // if user exists
-    if ($user['username'] === $uname) {
+    if ($user['uname'] === $uname) {
       array_push($errors, "Username already exists");
         echo "Username already exists";
         $nameerror="Username already exists";
@@ -74,7 +74,7 @@ echo "entered isset";
   if (count($errors) == 0) {
       $password = md5($psw);//encrypt the password before saving in the database
 
-      $query = "INSERT INTO customer (address, email, gst,mob1,mob2,name,password,username) 
+      $query = "INSERT INTO customer (address, email, gst,mob1,mob2,name,pwd,uname) 
                 VALUES('$address', '$email', '$cgst','$mob1','$mob2','$cname','$password','$uname')";
       mysqli_query($conn, $query);
      $_SESSION['cuname'] = $uname;
@@ -177,8 +177,8 @@ echo "entered isset";
       </div> 
  
  </form> 
-   
-<footer style="background-color: black;"> <center><a href="home.html" style="color: white">Home | </a><a href="gallery.html" style="color: white">Gallery | </a><a href="products.html" style="color: white">Products | </a><a href="home.html" style="color: white">About us |</a><a href="home.html" style="color: white">Contact us  </a><br>Developed by <br><a href="https://www.linkedin.com/in/sanjitha-gowda-94113b142/" style="color: white">Sanjitha Gowda</a><br></center></footer> 
-   
+ 
+<footer style="background-color: black;"> <center><a href="home.html" style="color: white">Home | </a><a href="gallery.html" style="color: white">Gallery | </a><a href="products.html" style="color: white">Products | </a><a href="home.html" style="color: white">About us |</a><a href="home.html" style="color: white">Contact us  </a><br>Developed by <br><a href="https://www.linkedin.com/in/sanjitha-gowda-94113b142/" style="color: white">Sanjitha Gowda</a>, <a href = "https://www.linkedin.com/in/tppreetham7/" style = "color:white"> Preetham T P</a><br></center></footer>
+  
 </body> 
 </html>
