@@ -1,15 +1,15 @@
 create database salmgmtv2;
 use salmgmtv2;
-create table owner(password varchar(20) , uname varchar(20) primary key, gst varchar(30));
-create table products(pid int(5) primary key, pname varchar(10) unique not null, pcost float(10,2) not null, qtyavail int not null,pdesc varchar(1000));
+create table owner(password varchar(100) , uname varchar(20) primary key, gst varchar(30));
+create table products(pid int(5) primary key, pname varchar(100) unique not null, pcost float(10,2) not null, qtyavail int not null,pdesc varchar(1000));
 create table supplier(total_payment float(10,2) not null, sgst varchar(20) primary key, sname varchar(100) not null, saddr varchar(100));
 create table rawmaterials(rid int(5) primary key, rname varchar(100) not null, rcost float(10,2) not null, rqtyavail int not null,sgst varchar(20) not null, foreign key (sgst) references supplier (sgst) on delete cascade);
-create table customer(username varchar(20) primary key, paymentbal float(10,2), name varchar(20) not null, gst varchar(20) unique not null,password varchar(20) not null,email VARCHAR(100) NOT NULL,mob1 int(10) NOT NULL,mob2 int(10),address varchar(50));
+create table customer(username varchar(20) primary key, paymentbal float(10,2), name varchar(100) not null, gst varchar(20) unique not null,password varchar(100) not null,email VARCHAR(100) NOT NULL,mob1 int(10) NOT NULL,mob2 int(10),address varchar(50));
 create table orders(pono int primary key, cgst varchar(20),finished int, driverno varchar(10), foreign key (cgst) references customer(gst) on delete cascade);
 create table ordered_pdts1(pono int not null, pid int(5) not null, qty int, finstage varchar(20), foreign key (pono) references orders(pono) on delete cascade, foreign key (pid) references products(pid) on delete cascade, primary key(pono,pid));
-create table employees(name varchar(20) not null, empid int(20) primary key, uname varchar(20) unique, pwd varchar(20), bsal float(10,2), ot float(10,2));
+create table employees(name varchar(100) not null, empid int(20) primary key, uname varchar(20) unique, pwd varchar(100), bsal float(10,2), ot float(10,2));
 
-insert into products(pcost,pdesc,pid,pname,qtyavail) values (1200,clamps,1,clamps,10), (10000,silicon carbide heating elements,2,silicon carbide heating elements,8), (1000,HFK bricks,3,HFK bricks,10), (10200,gold melting graphite crucible,4,gold melting graphite crucible,2), (10200,silver melting graphite crucible,5,silver melting graphite crucible,10), (175000, Electrically operated gold multiple melting furnace, 6,  Electrically operated gold multiple melting furnace ,1 ), (5000,L - Type thermocouple,7,L - Type thermocouple,5), (200,Thermocouple cable (PtPtRh),8,Thermocouple cable (PtPtRh),100), (90000,Oil fired furnace,9,Oil fired furnace,0), (240000,150 kg Aluminium meltilng / holding furnace,10,150 kg Aluminium meltilng / holding furnace,1);
+insert into products(pcost,pdesc,pid,pname,qtyavail) values (1200,"clamps",1,"clamps",10), (10000,"silicon carbide heating elements",2,"silicon carbide heating elements",8), (1000,"HFK bricks",3,"HFK bricks",10), (10200,"gold melting graphite crucible",4,"gold melting graphite crucible",2), (10200,"silver melting graphite crucible",5,"silver melting graphite crucible",10), (175000, "Electrically operated gold multiple melting furnace", 6,  "Electrically operated gold multiple melting furnace" ,1 ), (5000,"L - Type thermocouple",7,"L - Type thermocouple",5), (200,"Thermocouple cable (PtPtRh)",8,"Thermocouple cable (PtPtRh)",100), (90000,"Oil fired furnace",9,"Oil fired furnace",0), (240000,"150 kg Aluminium meltilng / holding furnace",10,"150 kg Aluminium meltilng / holding furnace",1);
 
 
 insert into supplier (saddr,sgst,sname,total_payment) values ("chennai", "01", "Continental thermal", 0), ("Bommasandra","02","Mersen",0), ("chennai","03","Abi Instruments",0), ("Hyderabad","04","Mariton heaters",0), ("Magadi Road","05","Pavantranix",0), ("Mathikere","06","San Process", 0), ("Bangalore","07","Unipower",0), ("Jalahalli","08","Alpha-tech",0);
