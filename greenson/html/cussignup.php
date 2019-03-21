@@ -78,7 +78,7 @@ echo "entered isset";
                 VALUES('$address', '$email', '$cgst','$mob1','$mob2','$cname','$password','$uname')";
       mysqli_query($conn, $query);
      $_SESSION['cuname'] = $uname;
-  	$_SESSION['success'] = "You are now logged in";
+  	$_SESSION['cgst'] = $cgst;
   	
       header("Location: cuswelcome.php");
 
@@ -107,11 +107,9 @@ echo "entered isset";
    
    <div id="mySidenav" class="sidenav"> 
        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a> 
-       <a href="gallery.html">Veiw Gallery</a> 
-       <a href="#">Place an order</a> 
-       <a href="#">Track order</a> 
-       <a href="#contact">Contact us</a> 
        <a href="home.html">Home</a>  
+       <a href="gallery.html">Veiw Gallery</a> 
+       <a href="home.html">Contact us</a> 
        <a href="mainlogin.html">Login</a> 
 <!-- on logout send to home--> 
          
