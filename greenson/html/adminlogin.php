@@ -48,11 +48,12 @@ if(isset($_POST["reg_adm"])){
 <div class="topnav">
   
    <div id="mySidenav" class="sidenav">
+       
        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+       <a href="home.html">Home</a>
        <a href="gallery.html">View Gallery</a>
-       <a href="#">Place an order</a>
+       <a href="cuslogin.php">Place an order</a>
        <a href="#">Track order</a>
-       <a href="#contact">Contact us</a>
        <a href="mainsignup.html">Create account</a> 
        <a href="mainlogin.html">Login</a>
         
