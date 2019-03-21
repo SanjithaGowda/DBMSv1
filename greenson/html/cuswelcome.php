@@ -2,13 +2,15 @@
 include "config.php";
 session_start();
 $user= $_SESSION['cuname'];
+$cgst= $_SESSION['cgst'];
+
 ?>
     
 <!DOCTYPE html>
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" type="text/css" href="../css/stylecuswelcome.css">
+<link rel="stylesheet" type="text/css" href="../css/stylemainlogin.css">
 <link rel="stylesheet" type="text/css" href="../css/basiclayout.css">
 </head>
 <body>
@@ -21,12 +23,12 @@ $user= $_SESSION['cuname'];
   
    <div id="mySidenav" class="sidenav">
        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+       <a href="home.html">Contact us</a>
        <a href="gallery.html">Veiw Gallery</a>
-       <a href="#">Place an order</a>
-       <a href="#">Track order</a>
-       <a href="#contact">Contact us</a>
-       <a href="mainsignup.html">Create account</a> 
-       <a href="mainlogin.html">Login</a>
+       <a href="placeorder1.php">Place an order</a>
+       <a href="trackorder.php">Track order</a>
+       <a href="updatepayment.php">Update Payment</a>    
+       <a href="cuslogout.php">Log-out</a>
 <!--on logout send to home -->        
     </div>
 
@@ -46,7 +48,7 @@ $user= $_SESSION['cuname'];
 </div>    
 
 <h2 style ="text-align:  center">Welcome <?php echo $user; ?> </h2>
-    
+<h2 style ="text-align:  center"> gst <?php echo $cgst; ?></h2>    
 <p style="text-align: center">Chose the option below for the required operations to be performed</p>
     <br>
 <div class="row">
@@ -59,7 +61,7 @@ $user= $_SESSION['cuname'];
     <div class="column">
         <img src="../images/placeorder.png" alt="place order" style="width:60%; padding-left: 20%; ">
         <br>
-        <button href ="#">Place an order </button>
+        <button><a href="placeorder1.php">Place Order</a></button>
     </div>
   
     <div class="column">
