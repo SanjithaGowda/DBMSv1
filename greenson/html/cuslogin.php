@@ -3,17 +3,23 @@ session_start();
 include("config.php");
 $uname="";
 $psw = "";
+
+if (isset($_SESSION["cuname"]))
+{
+    header("location: cuswelcome.php");
+}
+
 if(isset($_POST["cuslogin"])){
     $uname = mysqli_real_escape_string($conn, $_POST['uname']);;
     $psw = mysqli_real_escape_string($conn, $_POST['psw']);
     $emp_chk_query = "SELECT * FROM customer WHERE uname='$uname'";
-    
     $result = mysqli_query($conn,$emp_chk_query);
     $cust = mysqli_fetch_assoc($result);
     if($cust['uname']){
         $pwd_orig = $cust['pwd'];
         if(md5($psw) == $pwd_orig){
             $_SESSION['cuname']=$uname;
+            $_SESSION['cgst']=$cust['gst'];
             header("Location: cuswelcome.php");
         }
         else{
@@ -47,10 +53,8 @@ if(isset($_POST["cuslogin"])){
   
    <div id="mySidenav" class="sidenav">
        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+       <a href="home.html">Home</a>
        <a href="gallery.html">Veiw Gallery</a>
-       <a href="#">Place an order</a>
-       <a href="#">Track order</a>
-       <a href="#contact">Contact us</a>
        <a href="mainsignup.html">Create account</a> 
        <a href="mainlogin.html">Login</a>
 <!-- on logout send to home-->
