@@ -52,8 +52,8 @@ unset($_SESSION['cart_item']);
        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
        <a href="home.html">Home</a>
-       <a href="gallery.html">Veiw Gallery</a>
-       <a href="placeorder1.php">Reveiw order</a>
+       <a href="gallery.html">View Gallery</a>
+       <a href="placeorder1.php">Review order</a>
        <a href="updatepayment.php">Update Payment</a>
        <a href="cuslogout.php">Logout</a>
         
@@ -114,14 +114,14 @@ if(!empty($cartitems)){
                         $total_quantity += $item["quantity"];
                         $total_price += ($item["pcost"]*$item["quantity"]);
 		      }
-                echo "hello";
+                //echo "hello";
     $ocost =$total_price;
     $query = "update orders set ocost = '$ocost' where pono = '$pono'; ";
     if (!mysqli_query($conn, $query))
         echo "couldnt update ocost";
 ?>
 
-		            ?>
+		            
 
             <tr>
                 <td colspan="2" align="left">Total:</td>

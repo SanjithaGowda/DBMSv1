@@ -150,7 +150,10 @@ if(isset($_SESSION["cart_item"])){
                 <td></td>
             </tr>
         </tbody>
-    </table>		
+    </table>	
+    
+     <a id="btnplace"  href="placeorderfinal.php" style="text-align: center">Place Order</a>
+   
     <?php
     } else {
     ?>
@@ -160,7 +163,6 @@ if(isset($_SESSION["cart_item"])){
         ?>
     </div>
 
-    <a id="btnplace"  href="placeorderfinal.php" style="text-align: center">Place Order</a>
     <br>
 
     <div id="product-grid">
@@ -188,9 +190,15 @@ if(isset($_SESSION["cart_item"])){
                              <?php echo $product_array[$key]["pname"]; ?>
                          </h2>
                          <p style= "margin-left: 20px">
-                             <?php echo "Rs".$product_array[$key]["pcost"]; ?> <br><br>
-                             <input type="text" class="product-quantity" name="quantity" value="1" size="2" />
-                             <input type="submit" value="Add to Cart" class="btnAddAction" />
+                             <?php echo "Rs".$product_array[$key]["pcost"]; ?> <br>
+                             Quantity available: <?php echo $product_array[$key]["qtyavail"]; ?> <br><br>
+                             <?php if ($product_array[$key]["qtyavail"]>0) { ?>
+                                <input type="text" class="product-quantity" name="quantity" value="1" size="2" />
+                                <input type="submit" value="Add to Cart" class="btnAddAction" />
+                            <?php } else { ?>
+                                <input type="submit" value="No stock" class="btnAddAction" style="background-color: white; color: grey" disabled/>
+                           <?php } ?>
+                           
                          </p>
                 </form>
             <?php

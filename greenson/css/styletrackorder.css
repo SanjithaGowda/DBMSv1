@@ -1,0 +1,61 @@
+#track-order {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 100px;
+    margin-right: 100px;
+}
+
+#track-order table {
+	width: 100%;
+	background-color: #F0F0F0;
+}
+
+#track-order table td {
+    background-color: #FFFFFF;
+    text-align: center;
+}
+
+#leftal{
+    display: inline;
+    float:left;
+    margin: 0px;
+    padding: 0px;
+}
+
+#rightal{
+    padding: 0px;
+    margin: 0px;
+    display: inline;
+    float: right;
+}
+
+#btnplace {
+    position: absolute;
+    margin: auto;
+    right: 0;
+    left: 0;
+    width: fit-content;
+	background-color: #ffffff;
+	border: green 1px solid;
+	padding: 10px 20px;
+	color: green;
+	align-self: center;
+	text-decoration: none;
+	border-radius: 3px;
+	  
+}
+
+
+
+#product-grid .txt-heading {
+	margin-bottom: 18px;
+}
+
+
+.tbl-cart {
+	font-size: 0.9em;
+}
+
+.tbl-cart th {
+	font-weight: normal;
+}

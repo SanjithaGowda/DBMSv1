@@ -79,7 +79,7 @@ $image = $emp['image']
     </p>
     <br>
     
-    <button><a href="updatestatus.php">Update status </a></button>
+    <a href="updatestatus.php"><button>Update status </button></a>
     <br>
     <br>
     </div>

@@ -54,13 +54,13 @@ $empid= $_SESSION['empid'];
     <div class="column">
         <img src="../images/track_order_delivery_search-512.png" alt="place order" style="width:60%; padding-left: 20%; ">
         <br>
-        <button><a href="updatestatus.php">Update Status</a></button>
+        <a href="updatestatus.php"><button>Update Status</button></a>
     </div>
   
     <div class="column">
         <img src="../images/payment.png" alt="payment" style="width:60%; padding-left: 20%;" >
         <br>
-        <button><a href="empviewsalary.php">View Salary</a></button>
+        <a href="empviewsalary.php"><button>View Salary</button></a>
     </div>
 </div>
   

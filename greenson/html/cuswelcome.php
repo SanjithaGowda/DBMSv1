@@ -55,19 +55,21 @@ $cgst= $_SESSION['cgst'];
     <div class="column">
         <img src="../images/track_order_delivery_search-512.png" alt="Snow" style="width:60%; padding-left: 20%; ">
         <br>
-        <button href ="#">Track your order </button>
+        <a href ="trackorder.php"><button>Track your order </button></a>
     </div>
   
     <div class="column">
         <img src="../images/placeorder.png" alt="place order" style="width:60%; padding-left: 20%; ">
         <br>
-        <button><a href="placeorder1.php">Place Order</a></button>
+        <a href="placeorder1.php"><button>Place Order</button></a>
+        <!-- <a href = "placeorder1.php">Place Order</button> -->
+
     </div>
   
     <div class="column">
         <img src="../images/payment.png" alt="payment" style="width:60%; padding-left: 20%;" >
         <br>
-        <button href ="#">Update Payment </button>
+        <a href ="#"><button>Update Payment </button></a>
     </div>
 </div>
   
