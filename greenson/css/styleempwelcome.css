@@ -1,0 +1,54 @@
+.row {
+  box-sizing: border-box;
+ width: 80%;
+    margin: auto;
+}
+
+.column {
+  float: left;
+  width: 35%;
+  padding: 0px 70px 50px 70px ;
+    border-color: black;
+}
+
+/* Clearfix (clear floats) */
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+a:link ,a:visited, a:hover, a:active 
+{
+    text-decoration: none;
+    color: white;
+}
+button {
+  background-color: #808080;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+#btnplace {
+    position: absolute;
+    margin: auto;
+    right: 0;
+    left: 0;
+    width: fit-content;
+	background-color: #ffffff;
+	border: green 1px solid;
+	padding: 10px 20px;
+	color: green;
+	align-self: center;
+	text-decoration: none;
+	border-radius: 3px;
+	  
+}

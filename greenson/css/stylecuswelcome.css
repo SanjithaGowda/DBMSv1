@@ -17,8 +17,6 @@
   clear: both;
   display: table;
 }
-
-
 button {
   background-color: #808080;
   color: white;
@@ -32,4 +30,11 @@ button {
 button:hover {
   opacity: 0.8;
 }
+
+a:link ,a:visited, a:hover, a:active 
+{
+    text-decoration: none;
+    color: white;
+}
+
 

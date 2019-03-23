@@ -12,10 +12,10 @@ if (mysqli_query($conn, $query))
 else
     echo "order couldn't be placed";
 echo "New record has id: " . mysqli_insert_id($conn); 
-
+$pono = mysqli_insert_id($conn);
+    
 foreach ($cartitems as $item)
 {
-    $pono = mysqli_insert_id($conn);
     $finstage = "processing";
     $qty = $item["quantity"];
     $pid = $item["pid"];
@@ -64,7 +64,7 @@ unset($_SESSION['cart_item']);
     <script>
     function openNav() {
         document.getElementById("mySidenav").style.width = "10%";
-    }
+      }
 
     function closeNav() {
         document.getElementById("mySidenav").style.width = "0";
@@ -114,6 +114,13 @@ if(!empty($cartitems)){
                         $total_quantity += $item["quantity"];
                         $total_price += ($item["pcost"]*$item["quantity"]);
 		      }
+                echo "hello";
+    $ocost =$total_price;
+    $query = "update orders set ocost = '$ocost' where pono = '$pono'; ";
+    if (!mysqli_query($conn, $query))
+        echo "couldnt update ocost";
+?>
+
 		            ?>
 
             <tr>
@@ -133,7 +140,7 @@ if(!empty($cartitems)){
     }
         ?>
     </div>
-
+    
   <br>
     <a id="btnplace"  href="placeorder1.php" style="text-align: center; float: left">Place another Order</a>
     <br>

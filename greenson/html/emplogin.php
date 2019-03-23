@@ -2,7 +2,7 @@
 session_start();
 include("config.php");
 $error="";
-$uname="";
+$empuname="";
 $psw = "";
 if(isset($_POST["reg_emp"])){
     $uname = mysqli_real_escape_string($conn, $_POST['uname']);
@@ -13,9 +13,10 @@ if(isset($_POST["reg_emp"])){
     if($emp['uname']){
         $pwd_orig = $emp['pwd'];
         if(md5($psw) == $pwd_orig){
-            $_SESSION['emp']=$uname;
-            echo "header not set";
-           //header("Location: cuswelcome.php");
+            $empid = $emp['empid'];
+            $_SESSION['empuname']=$uname;
+            $_SESSION['empid']=$empid;
+            header("Location: empwelcome.php");
         }
         else{
             $error = "Password entered is invalid.";
