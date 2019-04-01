@@ -16,8 +16,8 @@ if(isset($_POST["reg_adm"])){
     $emp = mysqli_fetch_assoc($result);
     if($emp['uname']){
         $pwd_orig = $emp['pwd'];
-        //if(password_verify($psw,$emp["pwd"])){
-        if(md5($psw) == $pwd_orig){
+        if(password_verify($psw,$emp["pwd"])){
+        // if(md5($psw) == $pwd_orig){
         
             $_SESSION['admin']=$uname;
             echo "header to be filled";

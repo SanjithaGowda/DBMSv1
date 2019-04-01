@@ -12,8 +12,8 @@ if(isset($_POST["reg_emp"])){
     $emp = mysqli_fetch_assoc($result);
     if($emp['uname']){
         $pwd_orig = $emp['pwd'];
-        if(md5($psw) == $pwd_orig){
-        //if(password_verify($psw,$emp["pwd"])){ 
+        // if(md5($psw) == $pwd_orig){
+        if(password_verify($psw,$emp["pwd"])){ 
             $empid = $emp['empid'];
             $_SESSION['empuname']=$uname;
             $_SESSION['empid']=$empid;

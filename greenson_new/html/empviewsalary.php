@@ -88,7 +88,7 @@ $image = $emp['image']
     </p>
     <br>
     
-    <a href="updatestatus.php"><button>Go to Update status</button></a>
+    <a href="empupdatestatus.php"><button>Go to Update status</button></a>
     <br>
     <br>
     </div>

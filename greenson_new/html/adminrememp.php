@@ -1,7 +1,7 @@
 
 <?php
 include "config.php";
-session_start
+session_start();
     
 if(!isset($_SESSION['admin'])){
     echo "cuname unset";
@@ -105,7 +105,7 @@ input[type=submit] {
    <div id="mySidenav" class="sidenav">
        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
        <a href="adminwelcome.php">Admin welcome</a>
-       <a href="adminupdatepay.php">Update Payment</a>
+       <!-- <a href="adminupdatepay.php">Update Payment</a> -->
        <a href="adminupdatesal.php">Update Salary</a>
        <a href="adminupdatesupp.php">Update Supplier</a>
        <a href="adminviewcust.php">View Customers</a>

@@ -56,12 +56,15 @@ $image = $emp['image']
   
    <div id="mySidenav" class="sidenav">
        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-       <a href="home.html">Contact us</a>
-       <a href="gallery.html">Veiw Gallery</a>
-       <a href="placeorder1.php">View Salary</a>
-       <a href="empupdatestatus.php">Update order status</a>
-       <a href="emplogout.php">Logout</a>
-      on logout send to home -->        
+       <a href="adminupdatesal.php">Update Salary</a>
+       <a href="adminupdatesupp.php">Update Supplier</a>
+       <a href="adminviewcust.php">View Customers</a>
+       <a href="adminupdatepdts.php">Update products</a>
+       <a href="adminorderrm.php">Order Raw Materials</a>
+       <a href="adminwip.php">View Work in progress</a> 
+       <a href="adminrememp.php">Remove employee</a> 
+       <a href="cuslogout.php">Log-out</a> 
+       
     </div>
 
    <span style="cursor:pointer" onclick="openNav()"><div id="open"> Menu </div></span>
