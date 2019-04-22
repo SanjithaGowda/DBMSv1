@@ -38,8 +38,23 @@ $image = $emp['image']
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" type="text/css" href="../css/styleempwelcome.css">
+<link rel="stylesheet" type="text/css" href="../css/stylecussignup.css">
 <link rel="stylesheet" type="text/css" href="../css/stylecuslogin.css">
 <link rel="stylesheet" type="text/css" href="../css/basiclayout.css">
+    
+<style>
+    input[type=submit] {
+  background-color: white;
+  color: black;
+  padding: 10px 22px;
+  text-decoration: none;
+  cursor: pointer;
+  margin-left: 38%;  
+
+        margin-bottom: 2%;
+}   
+
+    </style>
 </head>
 <body>
 <header>
@@ -87,8 +102,9 @@ $image = $emp['image']
         <b>Salary: &nbsp;</b> Rs.<?php echo $bsal+($ot*100);?> 
     </p>
     <br>
-    
-    <a href="empupdatestatus.php"><button>Go to Update status</button></a>
+    <form action="empgeneratepayslip.php" method="post" style="border: 0px" target="_blank">
+       <input type="submit"  value="Generate Pay Slip" > 
+    </form>
     <br>
     <br>
     </div>

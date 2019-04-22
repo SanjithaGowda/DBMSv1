@@ -108,9 +108,7 @@ echo "entered isset";
        <a href="home.html">Home</a>  
        <a href="gallery.html">View Gallery</a> 
        <a href="home.html">Contact us</a> 
-       <a href="mainlogin.html">Login</a> 
-<!-- on logout send to home--> 
-         
+       <a href="mainlogin.html">Login</a>          
     </div> 
  
    <span style="cursor:pointer" onclick="openNav()"><div id="open"> Menu </div></span> 

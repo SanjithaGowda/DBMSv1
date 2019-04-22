@@ -53,8 +53,8 @@ $cgst = $_SESSION['cgst'];
        <a href="home.html">Home</a>
        <a href="gallery.html">View Gallery</a>
        <a href="placeorder1.php">Place order</a>
-       <a href="updatepayment.php">Update Payment</a>
-       <a href="mainlogin.html">Logout</a>
+       <a href="cusupdatepayment.php">Update Payment</a>
+       <a href="cuslogout.php">Logout</a>
         
     </div>
 

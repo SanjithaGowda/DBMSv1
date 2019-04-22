@@ -14,7 +14,6 @@ if(!isset($_SESSION['empuname'])){
     exit();
 }
 
-$user = $_SESSION['empuname'];
 if(isset($_POST["emplogout"]))
 {
     echo "logged out";
@@ -70,7 +69,7 @@ if(isset($_POST["emplogout"]))
 </div>    
     <br>
     <br>
-    <h2 style="text-align:center"> Hello <?php echo $user; ?> <br>
+    <h2 style="text-align:center"> Hello <br>
         Are you sure you want to log out? </h2>
     <br>
     <br>

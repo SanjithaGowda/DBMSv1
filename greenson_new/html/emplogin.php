@@ -12,8 +12,8 @@ if(isset($_POST["reg_emp"])){
     $emp = mysqli_fetch_assoc($result);
     if($emp['uname']){
         $pwd_orig = $emp['pwd'];
-        // if(md5($psw) == $pwd_orig){
-        if(password_verify($psw,$emp["pwd"])){ 
+        if(md5($psw) == $pwd_orig){
+        //if(password_verify($psw,$emp["pwd"])){ 
             $empid = $emp['empid'];
             $_SESSION['empuname']=$uname;
             $_SESSION['empid']=$empid;
@@ -49,7 +49,6 @@ if(isset($_POST["reg_emp"])){
        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
        <a href="home.html">Home</a>
        <a href="gallery.html">View Gallery</a>
-       <a href="#contact">Contact us</a>
        <a href="mainsignup.html">Create account</a> 
        <a href="mainlogin.html">Login</a> 
     </div>
@@ -85,7 +84,6 @@ if(isset($_POST["reg_emp"])){
     <input type="password" placeholder="Enter Password" name="psw" required>
         
     <button type="submit" name = "reg_emp" >Login</button>
-    <!-- <p><a href="emp_frgt_pwd.php" style="text-decoration:none">Forgot password?</a></p> -->
     <label>
       <input type="checkbox" checked="checked" name="remember"> Remember me
     </label>

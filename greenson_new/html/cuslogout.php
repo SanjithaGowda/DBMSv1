@@ -23,13 +23,6 @@ if(isset($_POST["cuslogout"]))
     header("Location: home.html");
 }
 
-if(isset($_POST["cuslogout"]))
-{
-    echo "logged out";
-    session_destroy();
-    header("Location: home.html");
-}
-
 
 ?>
 

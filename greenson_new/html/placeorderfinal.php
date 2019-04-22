@@ -15,6 +15,7 @@ if(!isset($_SESSION['cuname'])){
 $user= $_SESSION['cuname'];
 $cgst = $_SESSION['cgst'];
 $cartitems = $_SESSION['cart_item'];
+$_SESSION['cart_item_final'] = $_SESSION['cart_item'];
 if (isset($cartitems))
 {
     $finished  = 0;
@@ -26,7 +27,8 @@ if (isset($cartitems))
         echo "order couldn't be placed";
     echo "New record has id: " . mysqli_insert_id($conn); 
     $pono = mysqli_insert_id($conn);
-
+    $_SESSION["pono"]=$pono;
+    
     foreach ($cartitems as $item)
     {
         $finstage = "processing";
@@ -44,8 +46,8 @@ if (isset($cartitems))
             echo "qty available updated for pid = ".$pid;
         else
             echo "qty available couldn't be updated for pid = ".$pid;
-
-
+        
+        
 
     }
 
@@ -63,6 +65,19 @@ unset($_SESSION['cart_item']);
 
   
 <title>Greenson Thermal Technologies</title>
+<style>
+    input[type=submit] {
+  background-color: white;
+  color: black;
+  padding: 10px 22px;
+  text-decoration: none;
+  cursor: pointer;
+  margin-left: 45%;  
+  margin-top: 5%;
+}   
+
+    </style>
+
 </head>
 <body>
 <header>
@@ -78,7 +93,7 @@ unset($_SESSION['cart_item']);
        <a href="home.html">Home</a>
        <a href="gallery.html">View Gallery</a>
        <a href="placeorder1.php">Review order</a>
-       <a href="updatepayment.php">Update Payment</a>
+       <a href="cusupdatepayment.php">Update Payment</a>
        <a href="cuslogout.php">Logout</a>
         
     </div>
@@ -103,7 +118,7 @@ unset($_SESSION['cart_item']);
 { ?>
     <br>Your order has been successfully placed !
     <br> No more changes can be made !
-    <br> PO number = <?php echo $pono; ?>
+    <br> Invoice number = <?php echo $pono; ?>
     <br> Order details</h2>   
 <?php    
 } else
@@ -183,7 +198,11 @@ if(!empty($cartitems)){
                 
             </tr>
         </tbody>
-    </table>		
+    </table>
+    
+    <form action="cusgenerateinv.php" method="post" style="border: 0px" target="_blank">
+       <input type="submit"  value="Generate Invoice" > 
+    </form>
     <?php
 }else {
     ?>
@@ -193,17 +212,15 @@ if(!empty($cartitems)){
         ?>
     </div>
 
-    <br>
     <a id="btnplace"  href="placeorder1.php" style="text-align: center; float: left">Place another Order</a>
     <br>
     <br>
     <a id="btnplace"  href="custrackorder.php" style="text-align: center; float: left">Track your Order</a><br>
     <br>
-    <br>
     <a id="btnplace"  href="cusupdatepayment.php" style="text-align: center; float: left">Update Paymnent</a>
-      
-    
-<br>
+    <br>
+    <br>
+    <br>
     <br>
 <footer style="background-color: black;"> <center><a href="home.html" style="color: white">Home | </a><a href="gallery.html" style="color: white">Gallery | </a><a href="products.html" style="color: white">Products | </a><a href="home.html" style="color: white">About us |</a><a href="home.html" style="color: white">Contact us  </a><br>Developed by <br><a href="https://www.linkedin.com/in/sanjitha-gowda-94113b142/" style="color: white">Sanjitha Gowda</a>, <a href = "https://www.linkedin.com/in/tppreetham7/" style = "color:white"> Preetham T P</a><br></center></footer>
 </body>

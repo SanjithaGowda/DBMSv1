@@ -90,8 +90,8 @@ switch($_GET["action"]) {
        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
        <a href="home.html">Home</a>
        <a href="gallery.html">View Gallery</a>
-       <a href="trackorder.php">Track order</a>
-       <a href="updatepayment.php">Update Payment</a>
+       <a href="custrackorder.php">Track order</a>
+       <a href="cusupdatepayment.php">Update Payment</a>
        <a href="cuslogout.php">Logout</a>
         
     </div>

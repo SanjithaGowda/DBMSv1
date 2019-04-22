@@ -35,8 +35,8 @@ $cgst= $_SESSION['cgst'];
        <a href="home.html">Contact us</a>
        <a href="gallery.html">View Gallery</a>
        <a href="placeorder1.php">Place an order</a>
-       <a href="trackorder.php">Track order</a>
-       <a href="updatepayment.php">Update Payment</a>    
+       <a href="custrackorder.php">Track order</a>
+       <a href="cusupdatepayment.php">Update Payment</a>    
        <a href="cuslogout.php">Log-out</a>
 <!--on logout send to home -->        
     </div>

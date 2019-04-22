@@ -16,8 +16,8 @@ if(isset($_POST["reg_adm"])){
     $emp = mysqli_fetch_assoc($result);
     if($emp['uname']){
         $pwd_orig = $emp['pwd'];
-        if(password_verify($psw,$emp["pwd"])){
-        // if(md5($psw) == $pwd_orig){
+        //if(password_verify($psw,$emp["pwd"])){
+        if(md5($psw) == $pwd_orig){
         
             $_SESSION['admin']=$uname;
             echo "header to be filled";
@@ -83,8 +83,8 @@ if(isset($_POST["reg_adm"])){
   <div class="container">
     <label for="uname"><b>Username</b></label>
     <input type="text" placeholder="Enter Username" name="uname" required value = <?php 
-                                                                                        if($error=="Password entered is invalid.")
-                                                                                            echo $uname;?>>
+           if($error=="Password entered is invalid.")
+               echo $uname;?>>
 
 
     <label for="psw"><b>Password</b></label>
@@ -101,7 +101,6 @@ if(isset($_POST["reg_adm"])){
 
  </form>
 
-<footer style="background-color: black;"> <center><a href="home.html" style="color: white">Home | </a><a href="gallery.html" style="color: white">Gallery | </a><a href="products.html" style="color: white">Products | </a><a href="home.html" style="color: white">About us |</a><a href="home.html" style="color: white">Contact us  </a><br>Developed by <br><a href="https://www.linkedin.com/in/sanjitha-gowda-94113b142/" style="color: white">Sanjitha Gowda</a>, <a href = "https://www.linkedin.com/in/tppreetham7/" style = "color:white"> Preetham T P</a><br></center></footer>
-  
+<footer style="background-color: black;"> <center><a href="home.html" style="color: white">Home | </a><a href="gallery.html" style="color: white">Gallery | </a><a href="products.html" style="color: white">Products | </a><a href="home.html" style="color: white">About us |</a><a href="home.html" style="color: white">Contact us  </a><br>Developed by <br><a href="https://www.linkedin.com/in/sanjitha-gowda-94113b142/" style="color: white">Sanjitha Gowda</a>, <a href = "https://www.linkedin.com/in/tppreetham7/" style = "color:white"> Preetham T P</a><br></center></footer>  
 </body>
 </html>

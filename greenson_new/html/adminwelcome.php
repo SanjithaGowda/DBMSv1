@@ -30,18 +30,12 @@ if(!isset($_SESSION['admin'])){
   
 <div class="topnav">
   
-   <div id="mySidenav" class="sidenav">
-       <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-       <a href="adminupdatesal.php">Update Salary</a>
-       <a href="adminupdatepdts.php">Update products</a>
-       <a href="adminorderrm.php">Order Raw Materials</a>
-       <a href="adminupdatesupp.php">Update Supplier</a>
-       <a href="adminviewcust.php">View Customers</a>
-       <a href="adminwip.php">View Work in progress</a>  
-       <a href="adminaddrememployee.php">Add or remove employees</a> 
-       <a href="cuslogout.php">Log-out</a>
-    </div>
-
+   <div id="mySidenav" class="sidenav"> 
+       <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a> 
+        <a href="gallery.html">Veiw Gallery</a>
+       <a href="adminlogout.php">Logout</a>
+    </div> 
+ 
    <span style="cursor:pointer" onclick="openNav()"><div id="open"> Menu </div></span>
 
     <script>
