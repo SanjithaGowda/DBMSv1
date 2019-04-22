@@ -2,29 +2,38 @@
 session_start();
 include("config.php");
 $error="";
-$empuname="";
-$psw = "";
-if(isset($_POST["reg_emp"])){
-    $uname = mysqli_real_escape_string($conn, $_POST['uname']);
-    $psw = mysqli_real_escape_string($conn, $_POST['psw']);
-    $emp_chk_query = "SELECT * FROM employees WHERE uname='$uname'";
+$fpemail="";
+if(isset($_POST["fp_emp"])){
+    $fpemail = mysqli_real_escape_string($conn, $_POST['fpemail']);
+    $emp_chk_query = "SELECT * FROM customer WHERE email='$fpemail'";
     $result = mysqli_query($conn,$emp_chk_query);
     $emp = mysqli_fetch_assoc($result);
-    if($emp['uname']){
-        $pwd_orig = $emp['pwd'];
-        // if(md5($psw) == $pwd_orig){
-        if(password_verify($psw,$emp["pwd"])){ 
-            $empid = $emp['empid'];
-            $_SESSION['empuname']=$uname;
-            $_SESSION['empid']=$empid;
-            header("Location: empwelcome.php");
-        }
-        else{
-            $error = "Password entered is invalid.";
-        }
+    if($emp["email"]){
+        $uniqstr = $emp["pwd"];
+        $resetPassLink = "http://localhost/greenson_new/html/cust_reset_pwd.php?key=".$uniqstr;
+        $to = $emp['email'];
+        $subject = "Password Update Request";
+        $mailContent = 'Dear '.$emp['name'].', 
+        <br/>Recently a request was submitted to reset a password for your account. If this was a mistake, just ignore this email and nothing will happen.
+        <br/>To reset your password, visit the following link: <a href="'.$resetPassLink.'">Click to change password</a>
+        <br/><br/>Regards,
+        <br/>Greenson Thermal Technologies';
+        //set content-type header for sending HTML email
+        $headers = "MIME-Version: 1.0" . "\r\n";
+        $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+        //additional headers
+        $headers .= 'From: Greenson TTL<preethamanw@gmail.com>' . "\r\n";
+        //send email
+        mail($to,$subject,$mailContent,$headers);
+        ?>
+        <script>
+        window.alert("Mail has been sent to the entered Email id for password change.");
+        window.location = "cuslogin.php";
+        </script>
+    <?php
     }
     else{
-        $error = "Username does not exist.";
+        $error = "Email id not registered. Enter again";
     }
    
 }
@@ -68,27 +77,15 @@ if(isset($_POST["reg_emp"])){
 
 </div>    
 
-<h2 style ="text-align:  center">Employee Login </h2>
+<h2 style ="text-align:  center">Forgot password for Customer </h2>
 
-<form action="emplogin.php" method="post">
-  <div class="imgcontainer">
-    <img src="../images/img_avatar2.png" alt="Avatar" class="avatar">
-  </div>
+<form action="" method="post">
+ 
 
   <div class="container">
-    <label for="uname"><b>Username</b></label>
-    <input type="text" placeholder="Enter Username" name="uname" required value = <?php 
-                                                                                        if($error=="Password entered is invalid.")
-                                                                                            echo $uname;?>>
-
-    <label for="psw"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="psw" required>
-        
-    <button type="submit" name = "reg_emp" >Login</button>
-    <!-- <p><a href="emp_frgt_pwd.php" style="text-decoration:none">Forgot password?</a></p> -->
-    <label>
-      <input type="checkbox" checked="checked" name="remember"> Remember me
-    </label>
+    <label for="fpemail"><b>Email id</b></label>
+    <input type="text" placeholder="Enter registered Email id" name="fpemail" required >        
+    <button type="submit" name = "fp_emp" >Forgot password</button>
     <br>
     <div style = "font-size:11px; color:#cc0000; margin-top:10px"><?php echo $error; ?></div>
       </div>

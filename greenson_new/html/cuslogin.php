@@ -96,7 +96,7 @@ if(isset($_POST["cuslogin"])){
         
     <button type="submit" name="cuslogin">Login</button>
     <p style = "font-size:11px; color:#cc0000; margin-top:10px"><?php echo $error; ?></p>
-    
+    <p><a href = "cust_frgt_pwd.php" style="text-decoration:none">Forgot password?</a></p>
     <label>
       <input type="checkbox" checked="checked" name="remember"> Remember me
     </label>

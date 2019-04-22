@@ -2,31 +2,38 @@
 session_start();
 include("config.php");
 $error="";
-$empuname="";
-$psw = "";
-if(isset($_POST["reg_emp"])){
-    $uname = mysqli_real_escape_string($conn, $_POST['uname']);
-    $psw = mysqli_real_escape_string($conn, $_POST['psw']);
-    $emp_chk_query = "SELECT * FROM employees WHERE uname='$uname'";
-    $result = mysqli_query($conn,$emp_chk_query);
-    $emp = mysqli_fetch_assoc($result);
-    if($emp['uname']){
-        $pwd_orig = $emp['pwd'];
-        // if(md5($psw) == $pwd_orig){
-        if(password_verify($psw,$emp["pwd"])){ 
-            $empid = $emp['empid'];
-            $_SESSION['empuname']=$uname;
-            $_SESSION['empid']=$empid;
-            header("Location: empwelcome.php");
-        }
-        else{
-            $error = "Password entered is invalid.";
-        }
+
+$uniqkey = mysqli_real_escape_string($conn,$_GET['key']);
+if(isset($_POST["cust_reset_pwd"])){
+    $npwd = mysqli_real_escape_string($conn, $_POST['npwd']);
+    $cnpwd = mysqli_real_escape_string($conn, $_POST['cnpwd']);
+    if($npwd!=$cnpwd){
+        $error = "Passwords do not match!";
     }
     else{
-        $error = "Username does not exist.";
-    }
+        $rp_chk_query = "SELECT * FROM customer WHERE pwd='$uniqkey'";
+        $result = mysqli_query($conn,$rp_chk_query);
+        $emp = mysqli_fetch_assoc($result);
+        $gst = $emp['gst'];
+        if($emp['pwd']){  
+           // $password = md5($psw);//encrypt the password before saving in the database
+            $password = password_hash($npwd,PASSWORD_BCRYPT);
+            $change_query = "UPDATE customer set pwd='$password' where gst='$gst'";
+            mysqli_query($conn,$change_query);
+            ?>
+
+            <script>
+            window.alert("Password updated successfully. Kindly login again");
+            window.location = "cuslogin.php";
+            </script>
+
+    <?php        
+                    }
+        else{
+            $error = "Invalid customer";
+        }
    
+    }
 }
 ?>
 
@@ -68,27 +75,18 @@ if(isset($_POST["reg_emp"])){
 
 </div>    
 
-<h2 style ="text-align:  center">Employee Login </h2>
+<h2 style ="text-align:  center">Password updation for Customer </h2>
 
-<form action="emplogin.php" method="post">
-  <div class="imgcontainer">
-    <img src="../images/img_avatar2.png" alt="Avatar" class="avatar">
-  </div>
-
+<form action="" method="post">
   <div class="container">
-    <label for="uname"><b>Username</b></label>
-    <input type="text" placeholder="Enter Username" name="uname" required value = <?php 
-                                                                                        if($error=="Password entered is invalid.")
-                                                                                            echo $uname;?>>
+    <label for="npwd"><b>Enter new Password</b></label>
+    <input type="password" placeholder="Enter Password" name="npwd" required >
 
-    <label for="psw"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="psw" required>
+    <label for="cnpwd"><b>Confirm new Password</b></label>
+    <input type="password" placeholder="Enter Password" name="cnpwd" required>
         
-    <button type="submit" name = "reg_emp" >Login</button>
+    <button type="submit" name = "cust_reset_pwd" >Change Password</button>
     <!-- <p><a href="emp_frgt_pwd.php" style="text-decoration:none">Forgot password?</a></p> -->
-    <label>
-      <input type="checkbox" checked="checked" name="remember"> Remember me
-    </label>
     <br>
     <div style = "font-size:11px; color:#cc0000; margin-top:10px"><?php echo $error; ?></div>
       </div>
